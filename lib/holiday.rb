@@ -81,35 +81,11 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
-  holiday_hash.each do |season, holiday|
-    holiday.each do |attr, data| 
-      days = []   
-      days << attr
-      days.to_s.split('_')
-      if days.size > 1
-        day = ""
-        days.each do |d|
-        day << d.to_s.capitalize!.join(' ')
-        end
-
-      else
-        day = attr.to_s.capitalize!
-      end
-      # attr.each do |day|
-      #     days << day.to_s.split('_')
-      #     if days > 1
-      #       days.each do |d|
-      #         d.capitalize.join(' ')
-      #       end
-      #     end
-      #   end
-      supplies = []
-      data.each do |elem|
-        supplies << elem
-      end
-      puts season.to_s.capitalize! + ":"
-      puts "  " + day + ":" + " " + supplies.join(', ')
-    end   
+  holiday_hash.each do |season, holidays|
+    puts "#{season.capitalize}:"
+    holidays.each do |holiday, supplies|
+      puts"  #{holiday.to_s.split('_').map {|w| w.capitalize }.join(' ')}: #{supplies.join(", ")}"
+    end
   end
 
   # iterate through holiday_hash and print items such that your readout resembles:
