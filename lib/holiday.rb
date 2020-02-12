@@ -81,6 +81,37 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
+  holiday_hash.each do |season, holiday|
+    holiday.each do |attr, data| 
+      days = []   
+      days << attr
+      days.to_s.split('_')
+      if days.size > 1
+        day = ""
+        days.each do |d|
+        day << d.to_s.capitalize!.join(' ')
+        end
+
+      else
+        day = attr.to_s.capitalize!
+      end
+      # attr.each do |day|
+      #     days << day.to_s.split('_')
+      #     if days > 1
+      #       days.each do |d|
+      #         d.capitalize.join(' ')
+      #       end
+      #     end
+      #   end
+      supplies = []
+      data.each do |elem|
+        supplies << elem
+      end
+      puts season.to_s.capitalize! + ":"
+      puts "  " + day + ":" + " " + supplies.join(', ')
+    end   
+  end
+
   # iterate through holiday_hash and print items such that your readout resembles:
   # Winter:
   #   Christmas: Lights, Wreath
@@ -89,27 +120,38 @@ def all_supplies_in_holidays(holiday_hash)
   #   Fourth Of July: Fireworks, BBQ
   # etc.
   
-  holiday_hash.each do |season, holiday| 
-    puts season.to_s.capitalize! + ":" 
-  end
-  holiday_hash.each do |season, holiday| 
-    holiday.each do |attr, data|
-      formatted_attr = " "
-      formatted_attr << attr.to_s.capitalize!().split('_').join(' ')
-  
-      supplies = []
-      data.each do |elem| 
-        supplies << elem
-      end
+  # holiday_hash.each do |season, holiday| 
+  #   puts season.to_s.capitalize! + ":" 
+  # end
+  # holiday_hash.each do |season, holiday| 
+  #   holiday.each do |attr, data|
 
-        
-      puts " " + formatted_attr + ":" + " " + supplies.join( ', ' )
+  #     formatted_attr = " "
+  #     words = []
+
+  #     words << attr
+      
+  #     if words.size > 1
+  #       words.each do |word|
+  #         # binding.pry
+  #       end
+  #     end
+  #     formatted_attr << attr
+      
+  
+  #     supplies = []
+  #     data.each do |elem| 
+  #       supplies << elem
+  #     end
+      
+      
+  #     puts " " + formatted_attr + ":" + " " + supplies.join( ', ' )
 
        
       
 
-    end
-  end
+  #   end
+  # end
 
 end
 
